@@ -36,5 +36,6 @@ public class test_LoginPage extends DriverSetup {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
         Boolean automationExercise = wait.until(ExpectedConditions.titleIs("Automation Exercise"));
 
+        
     }
 }
