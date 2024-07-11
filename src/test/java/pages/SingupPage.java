@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import utilities.DriverSetup;
 
-public class Singup extends DriverSetup {
+public class SingupPage extends DriverSetup {
 
 // locators
     public By name = By.xpath("//input[@placeholder='Name']");

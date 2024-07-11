@@ -29,7 +29,7 @@ public class HomePage extends BasePage{
     public By biba= By.xpath("//a[@href='/brand_products/Biba']");
 
 //subscription
-    public By emailField = By.xpath("//input[@id='susbscribe_email']");
+    public By email = By.xpath("//input[@id='susbscribe_email']");
     public By subscriptionButton = By.xpath("//i[@class='fa fa-arrow-circle-o-right']");
 
     public void loadHomePage(){

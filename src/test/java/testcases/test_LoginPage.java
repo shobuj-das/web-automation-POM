@@ -29,13 +29,11 @@ public class test_LoginPage extends DriverSetup {
     }
     @Test
     public void test_login_with_valid_credentials() throws InterruptedException {
-        loginPage.getElement(loginPage.email_field).sendKeys("shobuj@yopmail.com");
-        loginPage.getElement(loginPage.password_field).sendKeys("shobuj123");
+        loginPage.getElement(loginPage.loginEmail).sendKeys("shobuj@yopmail.com");
+        loginPage.getElement(loginPage.loginPassword).sendKeys("shobuj123");
         loginPage.clickOnElement(loginPage.login_button);
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
         Boolean automationExercise = wait.until(ExpectedConditions.titleIs("Automation Exercise"));
-
-        
     }
 }
