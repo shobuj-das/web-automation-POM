@@ -27,27 +27,34 @@ public class BasePage extends DriverSetup {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    public boolean isSelected(By locator){
+    public boolean selectStatus(By locator){
         boolean status = getDriver().findElement(locator).isSelected();
         return  status;
     }
 
-    public  boolean isEnabled(By locator){
+    public  boolean enableStatus(By locator){
         boolean status = getDriver().findElement(locator).isEnabled();
         return status;
     }
 
-    public boolean isDisplayed(By locator){
-        boolean status = getDriver().findElement(locator).isDisplayed();
-        return status;
+    public boolean displayStatus(By locator){
+        try{
+            return getDriver().findElement(locator).isDisplayed();
+        } catch (Exception e){
+            return false;
+        }
     }
 
     public String getText(By locator){
         return getDriver().findElement(locator).getText();
     }
 
-    public String getAttributeValue(By locator){
-        return getDriver().findElement(locator).getAttribute();
+    public String getAttributeValue(By locator, String attributeName){
+        return getDriver().findElement(locator).getAttribute(attributeName);
+    }
+    public void writeOnElement(By locator, String text) throws InterruptedException {
+        getElement(locator).clear();
+        getElement(locator).sendKeys(text);
     }
 
 }

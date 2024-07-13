@@ -14,6 +14,8 @@ import utilities.DriverSetup;
 
 import java.time.Duration;
 
+import static org.testng.Assert.assertFalse;
+
 public class test_LoginPage extends DriverSetup {
 
 //    By email_field = By.xpath("//input[@data-qa='login-email']");
@@ -29,11 +31,24 @@ public class test_LoginPage extends DriverSetup {
     }
     @Test
     public void test_login_with_valid_credentials() throws InterruptedException {
-        loginPage.getElement(loginPage.loginEmail).sendKeys("shobuj@yopmail.com");
-        loginPage.getElement(loginPage.loginPassword).sendKeys("shobuj123");
+        basePage.writeOnElement(loginPage.loginEmail, "shobuj@yopmail.com");
+        basePage.writeOnElement(loginPage.loginPassword, "shobuj123");
         loginPage.clickOnElement(loginPage.login_button);
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
-        Boolean automationExercise = wait.until(ExpectedConditions.titleIs("Automation Exercise"));
+//        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
+
+        Assert.assertFalse(basePage.displayStatus(loginPage.login_button));
+//        Assert.assertEquals(getDriver().findElement(loginPage.errorMsg).getText(), "Your email or password is incorrect!");
     }
+
+    @Test
+    public void test_login_with_invalidEmail() throws InterruptedException {
+        basePage.writeOnElement(loginPage.loginEmail, "shobujyopmail.com");
+        basePage.writeOnElement(loginPage.loginPassword, "shobuj123");
+        loginPage.clickOnElement(loginPage.login_button);
+
+        Assert.assertEquals(basePage.getAttributeValue(loginPage.loginEmail, "validationMessage"), "Please include an '@' in the email address. 'adfa' is missing an '@'.");
+        Assert.assertFalse(basePage.displayStatus(loginPage.login_button));
+    }
+
 }

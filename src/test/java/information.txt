@@ -3,3 +3,23 @@ website: https://automationexercise.com
 valid credentials:
 mail : shobuj@yopmail.com
 pass : shobuj123
+
+
+  For login -- invalid credentials types
+                                                 Error messages
+valid user | wrong password  >> Your email or password is incorrect!
+wrong  user | valid password  >> Your email or password is incorrect!
+wrong user | wrong password  >>  Your email or password is incorrect!
+valid user | empty pass
+wrong user | empty pass
+empty user | valid pass
+empty user | wrong pass
+empty user | empty pass
+
+
+invalid email
+shobuj.com   >>   Please include an '@' in the email address. 'shobuj.com' is missing an '@'.
+shobuj@     >>     "Please enter a part following '@'. 'shobuj@' is incomplete."
+@gmail         >>   Please enter a part followed by '@'. '@gmail' is incomplete.
+
+

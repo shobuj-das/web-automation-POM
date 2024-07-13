@@ -15,7 +15,7 @@ public class LoginPage extends BasePage{
 // signup locator
     public By name = By.xpath("//input[@placeholder='Name']");
     public By signupEmail = By.xpath("//input[@data-qa='signup-email']");
-
+    public By errorMsg = By.xpath("//p[normalize-space()='Your email or password is incorrect!']");
     public void nevigateToLoginPage(){
         homePage.loadHomePage();
         homePage.clickOnElement(homePage.login_signup_button);
