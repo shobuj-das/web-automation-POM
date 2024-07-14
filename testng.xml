@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="E:/SQAcourse/Projects/Web Automation Project/web-automation-POM/src/test/java/testcases">
+        <classes>
+            <class name="testcases.test_HomePage">
+                <methods>
+                    <include name="testHomePageTitle"/>
+                </methods>
+            </class>
+            <class name="testcases.test_LoginPage">
+                <methods>
+                    <include name="test_login_with_valid_credentials"/>
+<!--                    <include name="test_login_with_invalidEmail"/>-->
+<!--                    <include name="testWithInvalidCredentials"/>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+

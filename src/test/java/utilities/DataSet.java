@@ -2,22 +2,21 @@ package utilities;
 
 import org.testng.annotations.DataProvider;
 
-//public class DataSet {
-//    @DataProvider(name = "invalidCredentials")
-//    public static Object invalidUserDataSet{
-//        Object[][] data = {
-//                {"shobuj@yopmail.com","shobuj"}
-//                        }
-//    }
-//}
-
-/*    For login -- invalid credentials types
-valid user | invalid password  >> Your email or password is incorrect!
-invalid  user | valid password  >> Your email or password is incorrect!
-invalid user | invalid password  >>  Your email or password is incorrect!
-valid user | empty pass
-invalid user | empty pass
-empty user | valid pass
-empty user | invalid pass
-empty user | empty pass
- */
+public class DataSet {
+    @DataProvider(name = "invalidCredentials")
+    //   data { email, password, errorMsg, emailValidationMsg, passwordValidationMsg }
+    public static Object invalidCredentials(){
+        Object[][] data = {
+                {"shobuj@yopmail.com", "shobuj", "Your email or password is incorrect!", "", ""},
+                {"shbu@yopmail.com", "shobuj123", "Your email or password is incorrect!", "", ""},
+                {"shbou@gmail.cm", "asdfa", "Your email or password is incorrect!", "", ""},
+                {"shobuj@yopmail.com", "", "", "", "Please fill out this field."},
+                {"", "shobuj123", "", "Please fill out this field.", ""},
+                {"", "", "", "Please fill out this field.", ""},
+                {"shobuj.com", "adsfa", "", "Please include an '@' in the email address. 'shobuj.com' is missing an '@'.", ""},
+                {"shobuj@", "adsfa", "", "Please enter a part following '@'. 'shobuj@' is incomplete.", ""},
+                {"@gmail", "adsfa", "", "Please enter a part followed by '@'. '@gmail' is incomplete.", ""},
+                        };
+        return data;
+    }
+}

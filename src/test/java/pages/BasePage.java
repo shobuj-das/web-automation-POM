@@ -1,14 +1,14 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import utilities.DriverSetup;
 
+import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
 public class BasePage extends DriverSetup {
@@ -27,17 +27,17 @@ public class BasePage extends DriverSetup {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
-    public boolean selectStatus(By locator){
+    public boolean getSelectStatus(By locator){
         boolean status = getDriver().findElement(locator).isSelected();
         return  status;
     }
 
-    public  boolean enableStatus(By locator){
+    public  boolean getEnableStatus(By locator){
         boolean status = getDriver().findElement(locator).isEnabled();
         return status;
     }
 
-    public boolean displayStatus(By locator){
+    public boolean getDisplayStatus(By locator){
         try{
             return getDriver().findElement(locator).isDisplayed();
         } catch (Exception e){
@@ -45,7 +45,7 @@ public class BasePage extends DriverSetup {
         }
     }
 
-    public String getText(By locator){
+    public String getElementText(By locator){
         return getDriver().findElement(locator).getText();
     }
 
@@ -57,4 +57,7 @@ public class BasePage extends DriverSetup {
         getElement(locator).sendKeys(text);
     }
 
+    public void addScreenShoot(String name){
+        Allure.addAttachment(name, new ByteArrayInputStream(((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES)));
+    }
 }

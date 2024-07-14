@@ -1,0 +1,7 @@
+Methods of test_login_page are invoking in reverse order.
+------
+Invoking two methods in testng.xml file, but report shows three methods invoked.
+---------
+BeforeSuite | afterSuite | ......
+Details
+---------

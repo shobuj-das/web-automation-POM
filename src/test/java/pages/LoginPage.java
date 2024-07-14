@@ -20,4 +20,19 @@ public class LoginPage extends BasePage{
         homePage.loadHomePage();
         homePage.clickOnElement(homePage.login_signup_button);
     }
+    BasePage basePage = new BasePage();
+    public boolean checkErrorMessages(String errorMessage, String emailValidationMsg, String passValidationMsg) {
+        if (!errorMessage.isEmpty()) {
+            String temp = basePage.getElementText(errorMsg);
+            return errorMessage.equals(temp);
+        } else {
+            if (!emailValidationMsg.isEmpty()) {
+                String temp = basePage.getAttributeValue(loginEmail, "validationMessage");
+                return emailValidationMsg.equals(temp);
+            } else {
+                String temp = basePage.getAttributeValue(loginPassword, "validationMessage");
+                return passValidationMsg.equals(temp);
+            }
+        }
+    }
 }
